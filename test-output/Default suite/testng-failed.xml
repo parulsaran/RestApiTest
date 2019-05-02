@@ -6,6 +6,7 @@
       <class name="com.qa.test.TestTdApi">
         <methods>
           <include name="testCreateDatabase"/>
+          <include name="afterTestRun"/>
           <include name="testDeleteDatabase"/>
           <include name="setUp"/>
         </methods>

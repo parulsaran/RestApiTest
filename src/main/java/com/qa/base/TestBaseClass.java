@@ -16,8 +16,8 @@ import com.qa.util.ReadWriteToJson;
 public class TestBaseClass {
 	public Properties prop;
 	
-	protected String apiUrl;
-	protected String serviceUrl,accountUrl,createDbUrl,deleteUrl,createTableUrl;
+	protected String baseUrl,serviceUrl,accountUrl;
+	protected String createDbUrl,deleteUrl,createTableUrl;
 	protected String url;
 
 	protected String apiKey;
@@ -30,8 +30,9 @@ public class TestBaseClass {
 		
 		    jsonObject = readWriteUtil.readFromJsonFile("database_input.json");
 			
-		    apiUrl = (String) jsonObject.get("URL");
+		    baseUrl = (String) jsonObject.get("BaseURL");
 			apiKey = (String) jsonObject.get("ApiKey");
+			
 			serviceUrl = (String) jsonObject.get("serviceURL");
 			accountUrl = (String) jsonObject.get("accountURL");
 			createDbUrl = (String) jsonObject.get("createDbURL");

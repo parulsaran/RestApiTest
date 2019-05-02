@@ -1,5 +1,5 @@
 {
-   "URL" : "https://api-development.treasuredata.com",
+   "BaseURL" : "https://api-development.treasuredata.com",
    "ApiKey": "TD1 1/1d8f2d9d5cfd4f6321d5291771cacc8fb290b5ea",
    "serviceURL": "/v3/database/list",
    "accountURL" : "/v4/account",
