@@ -1,8 +1,8 @@
 package com.qa.test;
 
 import static io.restassured.RestAssured.*;
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.Before;
+//import org.junit.Test;
 
 import com.qa.base.TestBaseClass;
 import com.qa.util.ReadWriteToJson;
@@ -11,22 +11,40 @@ import io.restassured.http.ContentType;
 import junit.framework.Assert;
 import static org.hamcrest.Matchers.equalTo;
 
-//import org.testng.annotations.BeforeClass;
-//import org.testng.annotations.Test;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 
 public class TestTdApi extends TestBaseClass {
 	
 	
 	ReadWriteToJson readWriteUtil;
+	String databaseName,tableName,ownerName;
+	String createDatabase,deleteDatabase,verifyDatabase;
+	String verifyTableName,databaseList,accountOwner;
 	
-	@Before
+	//@Before
+	@BeforeClass
 	public void setUp() {
 		
 	    readWriteUtil = new ReadWriteToJson();
+	    
+	    JSONObject jsonObject = readWriteUtil.readFromJsonFile("exampleTestScenario.json");
+	    createDatabase = (String) jsonObject.get("CreateDatabase");
+	    deleteDatabase = (String) jsonObject.get("DeleteDatabase");
+	    verifyDatabase = (String) jsonObject.get("VerifyDatabase");
+		verifyTableName = (String) jsonObject.get("VerifyTableName");
+		databaseList = (String) jsonObject.get("DatabaseList");
+		accountOwner =(String) jsonObject.get("AccountOwner");
 	}
 	
-	//Test1.Test to verify the status code
+	//Test1.Test to verify the status code for get request
     @Test
 	public void testToVerifyStatus() {
 		url = apiUrl + serviceUrl;
@@ -41,10 +59,11 @@ public class TestTdApi extends TestBaseClass {
 		Assert.assertEquals(200, response);
 	}
 	
-	//Test2.Test to print the Json response for database list
+	//Test2.Test to verify the Json response for database list
     @Test
 	public void testGetForDatabaseList() {
 		url = apiUrl + serviceUrl;
+		
 		 given()
 		.header("Authorization",apiKey)
 		.accept(ContentType.JSON)
@@ -52,17 +71,15 @@ public class TestTdApi extends TestBaseClass {
 		.get(url)
 		.then()
 		.assertThat().statusCode(200).and().contentType(ContentType.JSON)
-		.body("databases[0].name", equalTo("no_access"));
+		.body("databases[0].name", equalTo(databaseList));
 		
-		//.prettyPrint().toString();
-		//writing output to json file
-		//readWriteUtil.writeToJsonFile("databaseoutput.json",response);
 	}
 	
-	//Test3.Test to print the Json response
+	//Test3.Test to verify  the Json response for account list
     @Test
 		public void testGetForAccountList() {
 			url = apiUrl + accountUrl;
+			
 			given()
 			.header("Authorization",apiKey)
 			.accept(ContentType.JSON)
@@ -70,10 +87,8 @@ public class TestTdApi extends TestBaseClass {
 			.get(url)
 			.then()
 			.assertThat().statusCode(200).and().contentType(ContentType.JSON)
-			.body("owner.name",equalTo("Kazuki Ota"));
+			.body("owner.name",equalTo(accountOwner));
 			
-			//writing output to json file
-			//readWriteUtil.writeToJsonFile("accountOutput.json",response);
 		}
 		
   
@@ -83,11 +98,11 @@ public class TestTdApi extends TestBaseClass {
 		public void testCreateDatabase() {
 			
 			url = apiUrl + createDbUrl;
-			
+				
 			 int response = given()
 					.header("Authorization",apiKey)
 					.accept(ContentType.JSON)
-					.pathParam("database", "hello_test"+ 11)
+					.pathParam("database", createDatabase)
 					.when()
 					.post(url)
 					.thenReturn()
@@ -105,7 +120,7 @@ public class TestTdApi extends TestBaseClass {
 			 int response = given()
 					.header("Authorization",apiKey)
 					.accept(ContentType.JSON)
-					.pathParam("database", "hello_test10")
+					.pathParam("database", deleteDatabase)
 					.when()
 					.post(url)
 					.thenReturn()
@@ -113,6 +128,31 @@ public class TestTdApi extends TestBaseClass {
 			 Assert.assertEquals(200, response);
 			 
 		}
+		
+		//Test6. To get table in the specified database(get request )
+		@Test
+		public void testGetTableInDatabase() {
+			
+			url = apiUrl + createTableUrl;
+			
+			given()
+			.header("Authorization",apiKey)
+			.accept(ContentType.JSON)
+			.pathParam("database", verifyDatabase)
+			.when()
+			.get(url)
+			.then()
+			.assertThat().statusCode(200).and().contentType(ContentType.JSON)
+			.body("tables[0].name",equalTo(verifyTableName));
+			
+		}
+		
+		@AfterClass
+		public void afterTestRun() {
+			////delete database created
+		}
+		
+		
 		
 		
 

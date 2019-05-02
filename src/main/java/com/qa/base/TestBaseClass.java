@@ -17,7 +17,7 @@ public class TestBaseClass {
 	public Properties prop;
 	
 	protected String apiUrl;
-	protected String serviceUrl,accountUrl,createDbUrl,deleteUrl;
+	protected String serviceUrl,accountUrl,createDbUrl,deleteUrl,createTableUrl;
 	protected String url;
 
 	protected String apiKey;
@@ -27,7 +27,7 @@ public class TestBaseClass {
 	public TestBaseClass() {
 		
 		readWriteUtil = new ReadWriteToJson();
-		try {
+		
 		    jsonObject = readWriteUtil.readFromJsonFile("database_input.json");
 			
 		    apiUrl = (String) jsonObject.get("URL");
@@ -36,11 +36,9 @@ public class TestBaseClass {
 			accountUrl = (String) jsonObject.get("accountURL");
 			createDbUrl = (String) jsonObject.get("createDbURL");
 			deleteUrl = (String) jsonObject.get("deleteURL");
+			createTableUrl =(String) jsonObject.get("createTableURL");
 		
-		} catch (IOException | ParseException e) {
-			
-			e.printStackTrace();
-		}
+		 
 			
 	}
 }

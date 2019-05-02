@@ -1,0 +1,9 @@
+{
+ "CreateDatabase" : "parul_test69",
+ "DeleteDatabase" : "hello_test70",
+ "VerifyDatabase": "my_test_database",
+ "VerifyTableName":"my_test_snowflake_table",
+ "DatabaseList" : "no_access",
+ "AccountOwner": "Kazuki Ota"
+
+}

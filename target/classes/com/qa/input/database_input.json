@@ -4,6 +4,6 @@
    "serviceURL": "/v3/database/list",
    "accountURL" : "/v4/account",
    "createDbURL": "/v3/database/create/{database}",
-   "deleteURL":"/v3/database/delete/{database}"
-
+   "deleteURL":"/v3/database/delete/{database}",
+   "createTableURL": "/v3/table/list/{database}"
 }

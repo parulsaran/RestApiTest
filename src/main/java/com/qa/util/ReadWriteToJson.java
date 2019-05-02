@@ -27,11 +27,19 @@ public class ReadWriteToJson {
 			ex.printStackTrace();
 		}
 	}
-	public JSONObject readFromJsonFile(String filename) throws FileNotFoundException, IOException, ParseException {
+	public JSONObject readFromJsonFile(String filename)  {
 	    try(FileReader reader = new FileReader(readLocation + filename)) {
 		    Object obj = jsonParser.parse(reader);
 		    jsonObject = (JSONObject)obj;
 	        return jsonObject;
-        }
+        } catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return jsonObject;
   }
 }
