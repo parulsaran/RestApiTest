@@ -1,0 +1,55 @@
+{
+    "id": "1",
+    "created_at": "2015-09-18T08:04:36Z",
+    "updated_at": "2019-03-19T22:50:44Z",
+    "whitelist_enabled": false,
+    "session_timeout": 86400,
+    "default_engine": "presto",
+    "default_engine_versions": {
+        "hive": "stable",
+        "presto": "stable"
+    },
+    "roles": [
+        "presto",
+        "batch",
+        "fluentd_monitoring",
+        "plazma_api",
+        "td_employee",
+        "list_accounts",
+        "ui_assistant"
+    ],
+    "owner": {
+        "id": "1",
+        "name": "Kazuki Ota"
+    },
+    "features": [
+        "alpha",
+        "console-v3-default",
+        "fluentd-monitoring",
+        "reproxy-app",
+        "utilization",
+        "workflows",
+        "auditing",
+        "console-workflow",
+        "control-panel-enabled",
+        "cursor-pagination",
+        "hive-experimental-allowed",
+        "hive-usage-dashboard",
+        "policy-based-permission-control",
+        "predictive-customer-scoring",
+        "premium-auditing",
+        "presto-usage-dashboard",
+        "reporting",
+        "segment-builder",
+        "unified-navigation"
+    ],
+    "permissions": {
+        "invite": true
+    },
+    "onboarding": {
+        "has_created_queries": true,
+        "has_imported_data": true,
+        "has_invited_users": true,
+        "has_enabled_reporting": false
+    }
+}
