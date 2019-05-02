@@ -1,19 +1,18 @@
 package com.qa.test;
 
-import static io.restassured.RestAssured.given;
-
-import org.json.simple.JSONObject;
+import static io.restassured.RestAssured.*;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.qa.base.TestBaseClass;
 import com.qa.util.ReadWriteToJson;
 
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import junit.framework.Assert;
+import static org.hamcrest.Matchers.equalTo;
+
+//import org.testng.annotations.BeforeClass;
+//import org.testng.annotations.Test;
 
 
 public class TestTdApi extends TestBaseClass {
@@ -26,6 +25,7 @@ public class TestTdApi extends TestBaseClass {
 		
 	    readWriteUtil = new ReadWriteToJson();
 	}
+	
 	//Test1.Test to verify the status code
     @Test
 	public void testToVerifyStatus() {
@@ -35,7 +35,9 @@ public class TestTdApi extends TestBaseClass {
 		.accept(ContentType.JSON)
 		.when()
 		.get(url)
+		.thenReturn()
 		.getStatusCode();
+
 		Assert.assertEquals(200, response);
 	}
 	
@@ -43,68 +45,74 @@ public class TestTdApi extends TestBaseClass {
     @Test
 	public void testGetForDatabaseList() {
 		url = apiUrl + serviceUrl;
-		String response = given()
+		 given()
 		.header("Authorization",apiKey)
 		.accept(ContentType.JSON)
 		.when()
 		.get(url)
-		.prettyPrint().toString();
+		.then()
+		.assertThat().statusCode(200).and().contentType(ContentType.JSON)
+		.body("databases[0].name", equalTo("no_access"));
 		
+		//.prettyPrint().toString();
 		//writing output to json file
-		readWriteUtil.writeToJsonFile("databaseoutput.json",response);
+		//readWriteUtil.writeToJsonFile("databaseoutput.json",response);
 	}
 	
-	//Test2.Test to print the Json response
+	//Test3.Test to print the Json response
     @Test
 		public void testGetForAccountList() {
 			url = apiUrl + accountUrl;
-			String response = given()
+			given()
 			.header("Authorization",apiKey)
 			.accept(ContentType.JSON)
 			.when()
 			.get(url)
-			.prettyPrint().toString();
+			.then()
+			.assertThat().statusCode(200).and().contentType(ContentType.JSON)
+			.body("owner.name",equalTo("Kazuki Ota"));
 			
 			//writing output to json file
-			readWriteUtil.writeToJsonFile("accountOutput.json",response);
-			
+			//readWriteUtil.writeToJsonFile("accountOutput.json",response);
 		}
 		
   
-		//Test to create a database (Post request)
-		/*@SuppressWarnings("unchecked")
+		//Test4. to create a new database Post request
+       //Database name has to be unique or test fails
 		@Test
 		public void testCreateDatabase() {
 			
 			url = apiUrl + createDbUrl;
 			
-			String response = given()
+			 int response = given()
 					.header("Authorization",apiKey)
 					.accept(ContentType.JSON)
-					.queryParam("databsename", "test-parul")
+					.pathParam("database", "hello_test"+ 11)
 					.when()
-					.get(url)
-					.prettyPrint();
-					
-			System.out.println(response);
+					.post(url)
+					.thenReturn()
+					.statusCode();
+			 Assert.assertEquals(200, response);
+			 
+		}
+		//Test5. To delete a database (Post request)
+		//Database name should exist or test fails
+		@Test
+		public void testDeleteDatabase() {
 			
-			/*JSONObject jObject = new JSONObject();
-			/*jObject.put("name","test-test");
-			jObject.put("created_at"," ");
-			jObject.put("updated_at"," ");
-			jObject.put("count",0);
-			jObject.put("organization",null);
-			jObject.put("permission","administrator");
-			jObject.put("delete_protected","false");
+			url = apiUrl + deleteUrl;
 			
-			Response response = given()
-			.header("Authorization",apiKey)
-			.accept(ContentType.JSON)
-			.body(jObject.toJSONString())
-			.post(url);
-			int code = response.getStatusCode();
-			Assert.assertEquals(201, code);
-		}*/
+			 int response = given()
+					.header("Authorization",apiKey)
+					.accept(ContentType.JSON)
+					.pathParam("database", "hello_test10")
+					.when()
+					.post(url)
+					.thenReturn()
+					.statusCode();
+			 Assert.assertEquals(200, response);
+			 
+		}
 		
 		
 

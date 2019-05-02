@@ -17,7 +17,7 @@ public class TestBaseClass {
 	public Properties prop;
 	
 	protected String apiUrl;
-	protected String serviceUrl,accountUrl,createDbUrl;
+	protected String serviceUrl,accountUrl,createDbUrl,deleteUrl;
 	protected String url;
 
 	protected String apiKey;
@@ -34,7 +34,8 @@ public class TestBaseClass {
 			apiKey = (String) jsonObject.get("ApiKey");
 			serviceUrl = (String) jsonObject.get("serviceURL");
 			accountUrl = (String) jsonObject.get("accountURL");
-			createDbUrl = (String) jsonObject.get("createDbUrl");
+			createDbUrl = (String) jsonObject.get("createDbURL");
+			deleteUrl = (String) jsonObject.get("deleteURL");
 		
 		} catch (IOException | ParseException e) {
 			

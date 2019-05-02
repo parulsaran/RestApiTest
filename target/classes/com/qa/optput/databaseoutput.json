@@ -1174,7 +1174,7 @@
             "name": "sdkdb",
             "created_at": "2015-10-06 05:20:48 UTC",
             "updated_at": "2015-10-06 05:20:48 UTC",
-            "count": 1669584,
+            "count": 1669930,
             "organization": null,
             "permission": "administrator",
             "delete_protected": false
@@ -3991,7 +3991,7 @@
             "name": "system_test_result_output_into_td_account_1_0_0_15",
             "created_at": "2016-05-06 02:24:03 UTC",
             "updated_at": "2016-05-06 02:24:03 UTC",
-            "count": 21639,
+            "count": 21657,
             "organization": null,
             "permission": "administrator",
             "delete_protected": false
@@ -6016,7 +6016,7 @@
             "name": "uu59test",
             "created_at": "2016-09-06 06:27:16 UTC",
             "updated_at": "2016-09-06 06:27:16 UTC",
-            "count": 12993185,
+            "count": 13050314,
             "organization": null,
             "permission": "administrator",
             "delete_protected": false
@@ -8419,7 +8419,7 @@
             "name": "td_audit_log",
             "created_at": "2018-01-16 07:19:19 UTC",
             "updated_at": "2018-01-16 07:19:19 UTC",
-            "count": 2239946,
+            "count": 2241557,
             "organization": null,
             "permission": "query_only",
             "delete_protected": true
@@ -9949,7 +9949,7 @@
             "name": "cdp_audience_1236",
             "created_at": "2018-07-24 17:08:21 UTC",
             "updated_at": "2018-07-24 17:08:21 UTC",
-            "count": 873625,
+            "count": 863445,
             "organization": null,
             "permission": "administrator",
             "delete_protected": false
@@ -13756,7 +13756,7 @@
             "name": "cdp_audience_7424",
             "created_at": "2019-02-20 11:35:59 UTC",
             "updated_at": "2019-02-20 11:35:59 UTC",
-            "count": 25241294,
+            "count": 20364454,
             "organization": null,
             "permission": "administrator",
             "delete_protected": false
@@ -13990,7 +13990,7 @@
             "name": "youtube_kaizen2",
             "created_at": "2019-02-28 22:46:24 UTC",
             "updated_at": "2019-02-28 22:46:24 UTC",
-            "count": 26711,
+            "count": 26741,
             "organization": null,
             "permission": "administrator",
             "delete_protected": false
@@ -15917,6 +15917,51 @@
             "created_at": "2019-05-01 17:46:01 UTC",
             "updated_at": "2019-05-01 17:46:01 UTC",
             "count": 10002,
+            "organization": null,
+            "permission": "administrator",
+            "delete_protected": false
+        },
+        {
+            "name": "hello_test",
+            "created_at": "2019-05-02 05:03:18 UTC",
+            "updated_at": "2019-05-02 05:03:18 UTC",
+            "count": 0,
+            "organization": null,
+            "permission": "administrator",
+            "delete_protected": false
+        },
+        {
+            "name": "hello_test5",
+            "created_at": "2019-05-02 05:10:05 UTC",
+            "updated_at": "2019-05-02 05:10:05 UTC",
+            "count": 0,
+            "organization": null,
+            "permission": "administrator",
+            "delete_protected": false
+        },
+        {
+            "name": "hello_test6",
+            "created_at": "2019-05-02 05:22:00 UTC",
+            "updated_at": "2019-05-02 05:22:00 UTC",
+            "count": 0,
+            "organization": null,
+            "permission": "administrator",
+            "delete_protected": false
+        },
+        {
+            "name": "hello_test7",
+            "created_at": "2019-05-02 06:05:54 UTC",
+            "updated_at": "2019-05-02 06:05:54 UTC",
+            "count": 0,
+            "organization": null,
+            "permission": "administrator",
+            "delete_protected": false
+        },
+        {
+            "name": "hello_test1",
+            "created_at": "2019-05-02 06:18:13 UTC",
+            "updated_at": "2019-05-02 06:18:13 UTC",
+            "count": 0,
             "organization": null,
             "permission": "administrator",
             "delete_protected": false

@@ -2,7 +2,8 @@
    "URL" : "https://api-development.treasuredata.com",
    "ApiKey": "TD1 1/1d8f2d9d5cfd4f6321d5291771cacc8fb290b5ea",
    "serviceURL": "/v3/database/list",
-    "accountURL" : "/v4/account",
-   "createDbUrl": "/v3/database/create/"
+   "accountURL" : "/v4/account",
+   "createDbURL": "/v3/database/create/{database}",
+   "deleteURL":"/v3/database/delete/{database}"
 
 }

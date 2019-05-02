@@ -11,8 +11,9 @@ import org.json.simple.parser.ParseException;
 
 public class ReadWriteToJson {
 
-	String writeLocation = "/Users/parulsaran/eclipse-workspace/restapi/src/main/java/com/qa/optput/";
-	String readLocation = "/Users/parulsaran/eclipse-workspace/restapi/src/main/java/com/qa/input/";
+	String baseLocation = System.getProperty("user.dir");
+	String writeLocation = baseLocation+"/src/main/java/com/qa/optput/";
+	String readLocation = baseLocation+"/src/main/java/com/qa/input/";
 	
 	JSONParser jsonParser = new JSONParser();
 	JSONObject jsonObject;
@@ -30,8 +31,7 @@ public class ReadWriteToJson {
 	    try(FileReader reader = new FileReader(readLocation + filename)) {
 		    Object obj = jsonParser.parse(reader);
 		    jsonObject = (JSONObject)obj;
-		    System.out.println(jsonObject.toString());
-	       return jsonObject;
+	        return jsonObject;
         }
   }
 }
